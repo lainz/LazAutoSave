@@ -34,6 +34,9 @@ var
 { TLazAutoSave }
 
 procedure TLazAutoSave.OnTimer(Sender: TObject);
+var
+  i: integer;
+  save: boolean;
 begin
   if not FHandlerAdded then
   begin
@@ -43,8 +46,21 @@ begin
       FHandlerAdded := True;
     end;
   end;
-  if Assigned(FCurProject) and not FCurProject.IsVirtual then  //isvirtual = not saved yet
-    IDECommands.ExecuteIDECommand(Self, ecSaveAll);
+  if Assigned(FCurProject) and not FCurProject.IsVirtual then //isvirtual = not saved yet
+  begin
+    save := True;
+    for i:=0 to FCurProject.FileCount-1 do
+    begin
+      // there is a file not saved, don't do autosave to prevent multiple save dialogs
+      if not FileExists(FCurProject.Files[i].GetFullFilename) then
+      begin
+        save := False;
+        break;
+      end;
+    end;
+    if save then
+      IDECommands.ExecuteIDECommand(Self, ecSaveAll);
+  end;
 end;
 
 function TLazAutoSave.OnProjectOpened(Sender: TObject; AProject: TLazProject
