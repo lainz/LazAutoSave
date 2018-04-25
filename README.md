@@ -1,0 +1,2 @@
+# LazAutoSave
+Lazarus AutoSave Plugin
