@@ -1,0 +1,87 @@
+object SettingsFrm: TSettingsFrm
+  Left = 554
+  Height = 152
+  Top = 249
+  Width = 406
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Autosave  Options'
+  ClientHeight = 152
+  ClientWidth = 406
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.9.0.0'
+  object spAutoSaveInterval: TSpinEdit
+    AnchorSideLeft.Control = lbInterval
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = lbInterval
+    AnchorSideTop.Side = asrCenter
+    Left = 82
+    Height = 23
+    Top = 42
+    Width = 51
+    BorderSpacing.Left = 5
+    MaxValue = 1
+    MinValue = 1
+    TabOrder = 1
+    Value = 5
+  end
+  object cbEnableAutoSave: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 15
+    Height = 19
+    Top = 15
+    Width = 108
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 15
+    Caption = 'Enable AutoSave'
+    Checked = True
+    OnChange = cbEnableAutoSaveChange
+    State = cbChecked
+    TabOrder = 0
+  end
+  object lbInterval: TLabel
+    AnchorSideLeft.Control = cbEnableAutoSave
+    AnchorSideTop.Control = cbEnableAutoSave
+    AnchorSideTop.Side = asrBottom
+    Left = 35
+    Height = 15
+    Top = 46
+    Width = 42
+    BorderSpacing.Left = 20
+    BorderSpacing.Top = 12
+    Caption = 'Interval:'
+    ParentColor = False
+  end
+  object lbSec: TLabel
+    AnchorSideLeft.Control = spAutoSaveInterval
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = spAutoSaveInterval
+    AnchorSideTop.Side = asrCenter
+    Left = 138
+    Height = 15
+    Top = 46
+    Width = 51
+    BorderSpacing.Left = 5
+    Caption = '(seconds)'
+    ParentColor = False
+  end
+  object bpSettings: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 112
+    Width = 394
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 2
+    ShowButtons = [pbOK, pbClose]
+  end
+end

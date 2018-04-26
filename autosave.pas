@@ -2,20 +2,22 @@
   This source is only used to compile and install the package.
  }
 
-unit LazAutoSave;
+unit autosave;
 
 {$warn 5023 off : no warning about unused units}
 interface
 
 uses
-  lazautosaveunit, LazarusPackageIntf;
+  autosave_intf, autosave_const, autosave_settingsfrm, autosave_main, 
+  autosave_settings, LazarusPackageIntf;
 
 implementation
 
 procedure Register;
 begin
+  RegisterUnit('autosave_intf', @autosave_intf.Register);
 end;
 
 initialization
-  RegisterPackage('LazAutoSave', @Register);
+  RegisterPackage('autosave', @Register);
 end.
